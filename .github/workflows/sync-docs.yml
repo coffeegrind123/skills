@@ -1,0 +1,73 @@
+name: Sync Skills Documentation
+
+on:
+  schedule:
+    - cron: '0 6 */3 * *'  # Every 3 days at 6am UTC
+  workflow_dispatch: {}
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Sync agentskills.io docs
+        run: |
+          mkdir -p docs/agentskills.io
+
+          urls=(
+            "https://agentskills.io/client-implementation/adding-skills-support.md"
+            "https://agentskills.io/clients.md"
+            "https://agentskills.io/home.md"
+            "https://agentskills.io/skill-creation/best-practices.md"
+            "https://agentskills.io/skill-creation/evaluating-skills.md"
+            "https://agentskills.io/skill-creation/optimizing-descriptions.md"
+            "https://agentskills.io/skill-creation/quickstart.md"
+            "https://agentskills.io/skill-creation/using-scripts.md"
+            "https://agentskills.io/specification.md"
+            "https://agentskills.io/what-are-skills.md"
+            "https://agentskills.io/llms.txt"
+          )
+
+          for url in "${urls[@]}"; do
+            filename=$(echo "$url" | sed 's|https://agentskills.io/||' | sed 's|/|__|g')
+            echo "Fetching $url -> docs/agentskills.io/$filename"
+            curl -sSL --fail "$url" -o "docs/agentskills.io/$filename" || echo "WARN: Failed to fetch $url"
+          done
+
+      - name: Sync Claude platform docs
+        run: |
+          mkdir -p docs/platform.claude.com
+
+          urls=(
+            "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.md"
+            "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart.md"
+            "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices.md"
+            "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/enterprise.md"
+          )
+
+          for url in "${urls[@]}"; do
+            filename=$(basename "$url")
+            echo "Fetching $url -> docs/platform.claude.com/$filename"
+            curl -sSL --fail "$url" -o "docs/platform.claude.com/$filename" || echo "WARN: Failed to fetch $url"
+          done
+
+      - name: Update submodule
+        run: |
+          git submodule update --remote --merge anthropic-skills || true
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Sync skills docs $(date -u +%Y-%m-%d)"
+            git push
+          fi
