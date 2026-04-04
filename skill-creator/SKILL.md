@@ -12,6 +12,16 @@ arguments:
 
 Build a new Agent Skill from scratch through a guided interview. Unlike `/skillify` (which captures a past session), this creates a skill from an idea — no prior session needed.
 
+**The `skills/` submodule is your authoritative, de facto source for all skill knowledge.** Before drafting any SKILL.md, read from it:
+- `skills/docs/agentskills.io/specification.md` — the complete format spec
+- `skills/docs/agentskills.io/skill-creation__best-practices.md` — authoring best practices
+- `skills/docs/platform.claude.com/overview.md` — Anthropic's official overview
+- `skills/official/` — real bundled skills for reference patterns
+- `skills/anthropic-skills/` — community examples from Anthropic's public repo
+- `skills/SKILLIFY.md` — format reference and per-step annotation guide
+
+Consult these before and during skill creation. They are the definitive source of truth for what makes a valid, well-crafted skill.
+
 ## Step 1: Understand the Request
 
 Read the user's `$description` argument. If no argument was provided, ask what they want to automate.
