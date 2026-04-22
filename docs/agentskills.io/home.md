@@ -334,6 +334,15 @@ export const clients = [{
   darkSrc: "/images/logos/nanobot/nanobot-logo-dark.png",
   instructionsUrl: "https://nanobot.wiki/docs/0.1.5/use-nanobot/skills",
   sourceCodeUrl: "https://github.com/HKUDS/nanobot"
+}, {
+  name: "fast-agent",
+  description: "fast-agent is a simple, extendable way to interact with LLMs. Excellent for Coding, Evals, ACPX and Skills development.",
+  url: "https://fast-agent.ai/",
+  lightSrc: "/images/logos/fast-agent/fast-agent-light.svg",
+  darkSrc: "/images/logos/fast-agent/fast-agent-dark.svg",
+  scale: 1.33,
+  instructionsUrl: "https://fast-agent.ai/agents/skills/",
+  sourceCodeUrl: "https://github.com/evalstate/fast-agent"
 }];
 
 Agent Skills are folders of instructions, scripts, and resources that agents can discover and use to do things more accurately and efficiently.
