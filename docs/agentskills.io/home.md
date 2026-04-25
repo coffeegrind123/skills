@@ -2,9 +2,9 @@
 > Fetch the complete documentation index at: https://agentskills.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Overview
+# Agent Skills Overview
 
-> A simple, open format for giving agents new capabilities and expertise.
+> A standardized way to give AI agents new capabilities and expertise.
 
 export const LogoCarousel = ({clients}) => {
   const [shuffled, setShuffled] = useState(clients);
@@ -19,40 +19,27 @@ export const LogoCarousel = ({clients}) => {
     };
     setShuffled(shuffle(clients));
   }, []);
+  const doubled = [...shuffled, ...shuffled];
+  const GAP_PX = 48;
+  const PX_PER_SECOND = 40;
+  const cycleWidth = shuffled.reduce((sum, client) => sum + 150 * (client.scale || 1) + GAP_PX, 0);
+  const cycleDuration = cycleWidth / PX_PER_SECOND;
   const Logo = ({client}) => <a href={client.url} className="block no-underline border-none w-full h-full">
       <img className="block dark:hidden object-contain w-full h-full !my-0" src={client.lightSrc} alt={client.name} noZoom />
       <img className="hidden dark:block object-contain w-full h-full !my-0" src={client.darkSrc} alt={client.name} noZoom />
     </a>;
-  const row1 = shuffled.filter((_, i) => i % 2 === 0);
-  const row2 = shuffled.filter((_, i) => i % 2 === 1);
-  const row1Doubled = [...row1, ...row1];
-  const row2Doubled = [...row2, ...row2];
-  return <>
-      <div className="logo-carousel">
-        <div className="logo-carousel-track" style={{
-    animation: 'logo-scroll 50s linear infinite'
+  return <div className="logo-carousel">
+      <div className="logo-carousel-track" style={{
+    animation: `logo-scroll ${cycleDuration}s linear infinite`
   }}>
-          {row1Doubled.map((client, i) => <div key={`${client.name}-${i}`} style={{
+        {doubled.map((client, i) => <div key={`${client.name}-${i}`} style={{
     width: 150 * (client.scale || 1),
     maxWidth: "100%"
   }}>
-              <Logo client={client} />
-            </div>)}
-        </div>
+            <Logo client={client} />
+          </div>)}
       </div>
-      <div className="logo-carousel">
-        <div className="logo-carousel-track" style={{
-    animation: 'logo-scroll 60s linear infinite reverse'
-  }}>
-          {row2Doubled.map((client, i) => <div key={`${client.name}-${i}`} style={{
-    width: 150 * (client.scale || 1),
-    maxWidth: "100%"
-  }}>
-              <Logo client={client} />
-            </div>)}
-        </div>
-      </div>
-    </>;
+    </div>;
 };
 
 export const clients = [{
@@ -345,28 +332,44 @@ export const clients = [{
   sourceCodeUrl: "https://github.com/evalstate/fast-agent"
 }];
 
-Agent Skills are folders of instructions, scripts, and resources that agents can discover and use to do things more accurately and efficiently.
+## What are Agent Skills?
+
+Agent Skills are a lightweight, open format for extending AI agent capabilities with specialized knowledge and workflows.
+
+At its core, a skill is a folder containing a `SKILL.md` file. This file includes metadata (`name` and `description`, at minimum) and instructions that tell an agent how to perform a specific task. Skills can also bundle scripts, reference materials, templates, and other resources.
+
+```
+my-skill/
+├── SKILL.md          # Required: metadata + instructions
+├── scripts/          # Optional: executable code
+├── references/       # Optional: documentation
+├── assets/           # Optional: templates, resources
+└── ...               # Any additional files or directories
+```
 
 ## Why Agent Skills?
 
-Agents are increasingly capable, but often don't have the context they need to do real work reliably. Skills solve this by giving agents access to procedural knowledge and company-, team-, and user-specific context they can load on demand. Agents with access to a set of skills can extend their capabilities based on the task they're working on.
+Agents are increasingly capable, but often don't have the context they need to do real work reliably. Skills solve this by packaging procedural knowledge and company-, team-, and user-specific context into portable, version-controlled folders that agents load on demand. This gives agents:
 
-**For skill authors**: Build capabilities once and deploy them across multiple agent products.
+* **Domain expertise**: Capture specialized knowledge — from legal review processes to data analysis pipelines to presentation formatting — as reusable instructions and resources.
+* **Repeatable workflows**: Turn multi-step tasks into consistent, auditable procedures.
+* **Cross-product reuse**: Build a skill once and use it across any skills-compatible agent.
 
-**For compatible agents**: Support for skills lets end users give agents new capabilities out of the box.
+## How do Agent Skills work?
 
-**For teams and enterprises**: Capture organizational knowledge in portable, version-controlled packages.
+Agents load skills through **progressive disclosure**, in three stages:
 
-## What can Agent Skills enable?
+1. **Discovery**: At startup, agents load only the name and description of each available skill, just enough to know when it might be relevant.
 
-* **Domain expertise**: Package specialized knowledge into reusable instructions, from legal review processes to data analysis pipelines.
-* **New capabilities**: Give agents new capabilities (e.g. creating presentations, building MCP servers, analyzing datasets).
-* **Repeatable workflows**: Turn multi-step tasks into consistent and auditable workflows.
-* **Interoperability**: Reuse the same skill across different skills-compatible agent products.
+2. **Activation**: When a task matches a skill's description, the agent reads the full `SKILL.md` instructions into context.
 
-## Adoption
+3. **Execution**: The agent follows the instructions, optionally executing bundled code or loading referenced files as needed.
 
-Agent Skills are supported by leading AI development tools.
+Full instructions load only when a task calls for them, so agents can keep many skills on hand with only a small context footprint.
+
+## Where can I use Agent Skills?
+
+Agent Skills are supported by a large number of AI tools and agentic clients — see the [Client Showcase](/clients) to explore some of them!
 
 <LogoCarousel clients={clients} />
 
@@ -376,26 +379,14 @@ The Agent Skills format was originally developed by [Anthropic](https://www.anth
 
 Come join the discussion on [GitHub](https://github.com/agentskills/agentskills) or [Discord](https://discord.gg/MKPE9g8aUy)!
 
-## Get started
+## Get started with Agent Skills
 
-<CardGroup cols={3}>
-  <Card title="What are skills?" icon="lightbulb" href="/what-are-skills">
-    Learn about skills, how they work, and why they matter.
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/skill-creation/quickstart">
+    Create your first Agent Skill and see it in action.
   </Card>
 
   <Card title="Specification" icon="file-code" href="/specification">
-    The complete format specification for SKILL.md files.
-  </Card>
-
-  <Card title="Add skills support" icon="gear" href="/client-implementation/adding-skills-support">
-    Add skills support to your agent or tool.
-  </Card>
-
-  <Card title="Example skills" icon="code" href="https://github.com/anthropics/skills">
-    Browse example skills on GitHub.
-  </Card>
-
-  <Card title="Reference library" icon="wrench" href="https://github.com/agentskills/agentskills/tree/main/skills-ref">
-    Validate skills and generate prompt XML.
+    The complete format specification for Agent Skills.
   </Card>
 </CardGroup>

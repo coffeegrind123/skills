@@ -71,7 +71,7 @@ Here's what happened behind the scenes:
 
 3. **Execution** — The agent followed the instructions in the body, adapting the terminal command to the number of sides in your request.
 
-This process uses **progressive disclosure** to let the agent access many skills without loading all their instructions up front. For more detail, see [How skills work](/what-are-skills#how-skills-work).
+This process uses **progressive disclosure** to let the agent access many skills without loading all their instructions up front.
 
 ## Next steps
 
