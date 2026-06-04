@@ -56,9 +56,24 @@ jobs:
             curl -sSL --fail "$url" -o "docs/platform.claude.com/$filename" || echo "WARN: Failed to fetch $url"
           done
 
-      - name: Update submodule
+      - name: Update submodule to latest upstream
         run: |
-          git submodule update --remote --merge anthropic-skills || true
+          set -euo pipefail
+          # Sync the configured URL/branch from .gitmodules into .git/config,
+          # then ensure the submodule working tree exists.
+          git submodule sync --recursive
+          git submodule update --init anthropic-skills
+
+          # Advance the pin to the tip of the upstream default branch.
+          BRANCH="$(git config -f .gitmodules submodule.anthropic-skills.branch || echo main)"
+          git -C anthropic-skills fetch --force origin "$BRANCH"
+          NEW_SHA="$(git -C anthropic-skills rev-parse "origin/$BRANCH")"
+          git -C anthropic-skills checkout --force "$NEW_SHA"
+
+          OLD_SHA="$(git rev-parse :anthropic-skills 2>/dev/null || echo none)"
+          echo "anthropic-skills: $OLD_SHA -> $NEW_SHA (origin/$BRANCH)"
+          # Stage the gitlink so the new pin is recorded in the superproject.
+          git add anthropic-skills
 
       - name: Commit and push
         run: |
