@@ -366,6 +366,7 @@ export const clients = [{
   url: "https://bub.build/",
   lightSrc: "/images/logos/bub/bub-light.svg",
   darkSrc: "/images/logos/bub/bub-dark.svg",
+  scale: 0.5,
   instructionsUrl: "https://bub.build/docs/build/skills/",
   sourceCodeUrl: "https://github.com/bubbuild/bub"
 }, {
@@ -396,6 +397,7 @@ export const clients = [{
   url: "https://deepcode.vegamo.cn/en",
   lightSrc: "/images/logos/deepcode/deepcode-logo-light.svg",
   darkSrc: "/images/logos/deepcode/deepcode-logo-dark.svg",
+  scale: 0.5,
   instructionsUrl: "https://deepcode.vegamo.cn/en/docs/configuration/agent-skills",
   sourceCodeUrl: "https://github.com/lessweb/deepcode-cli"
 }];
