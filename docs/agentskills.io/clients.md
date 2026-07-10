@@ -80,6 +80,14 @@ export const clients = [{
   darkSrc: "/images/logos/junie/junie-logo-on-dark.svg",
   instructionsUrl: "https://junie.jetbrains.com/docs/agent-skills.html"
 }, {
+  name: "ZeroClaw",
+  description: "ZeroClaw is an open-source, Rust-first AI agent runtime for local, provider-agnostic personal agents with Agent Skills support.",
+  url: "https://www.zeroclawlabs.ai/",
+  lightSrc: "/images/logos/zeroclaw/zeroclaw-logo-light.png",
+  darkSrc: "/images/logos/zeroclaw/zeroclaw-logo-dark.png",
+  instructionsUrl: "https://docs.zeroclawlabs.ai/master/en/tools/skills.html",
+  sourceCodeUrl: "https://github.com/zeroclaw-labs/zeroclaw"
+}, {
   name: "Gemini CLI",
   description: "Gemini CLI is an open-source AI agent that brings the power of Gemini directly into your terminal.",
   url: "https://geminicli.com",
@@ -400,6 +408,13 @@ export const clients = [{
   scale: 0.5,
   instructionsUrl: "https://deepcode.vegamo.cn/en/docs/configuration/agent-skills",
   sourceCodeUrl: "https://github.com/lessweb/deepcode-cli"
+}, {
+  name: "Pulumi Neo",
+  description: "Pulumi Neo is an AI agent that manages cloud infrastructure with Pulumi. It runs in Pulumi Cloud, the CLI, GitHub, and Slack, and works within your organization's policies and approvals.",
+  url: "https://www.pulumi.com/product/neo/",
+  lightSrc: "/images/logos/pulumi-neo/pulumi-neo-logo-light.svg",
+  darkSrc: "/images/logos/pulumi-neo/pulumi-neo-logo-dark.svg",
+  instructionsUrl: "https://www.pulumi.com/docs/ai/skills/"
 }];
 
 <ClientShowcase clients={clients} />
