@@ -55,6 +55,7 @@ export const clients = [{
   url: "https://www.zeroclawlabs.ai/",
   lightSrc: "/images/logos/zeroclaw/zeroclaw-logo-light.png",
   darkSrc: "/images/logos/zeroclaw/zeroclaw-logo-dark.png",
+  scale: 0.45,
   instructionsUrl: "https://docs.zeroclawlabs.ai/master/en/tools/skills.html",
   sourceCodeUrl: "https://github.com/zeroclaw-labs/zeroclaw"
 }, {
@@ -168,11 +169,11 @@ export const clients = [{
   darkSrc: "/images/logos/claude-ai/Claude-logo-Ivory.svg",
   instructionsUrl: "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"
 }, {
-  name: "OpenAI Codex",
-  description: "Codex is OpenAI's coding agent for software development.",
-  url: "https://developers.openai.com/codex",
-  lightSrc: "/images/logos/oai-codex/OAI_Codex-Lockup_400px.svg",
-  darkSrc: "/images/logos/oai-codex/OAI_Codex-Lockup_400px_Darkmode.svg",
+  name: "ChatGPT & Codex",
+  description: "ChatGPT brings together agents for different kinds of work, including Codex for software development and ChatGPT Work for broader work. Use ChatGPT across desktop, web, and mobile, with Codex also available in your editor and terminal.",
+  url: "https://chatgpt.com/codex/",
+  lightSrc: "/images/logos/chatgpt/light.svg",
+  darkSrc: "/images/logos/chatgpt/dark.svg",
   instructionsUrl: "https://developers.openai.com/codex/skills/",
   sourceCodeUrl: "https://github.com/openai/codex"
 }, {
@@ -384,6 +385,7 @@ export const clients = [{
   url: "https://www.pulumi.com/product/neo/",
   lightSrc: "/images/logos/pulumi-neo/pulumi-neo-logo-light.svg",
   darkSrc: "/images/logos/pulumi-neo/pulumi-neo-logo-dark.svg",
+  scale: 0.45,
   instructionsUrl: "https://www.pulumi.com/docs/ai/skills/"
 }];
 
