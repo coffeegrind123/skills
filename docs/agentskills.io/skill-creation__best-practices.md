@@ -39,9 +39,9 @@ The first draft of a skill usually needs refinement. Run the skill against real 
 
 Even a single pass of execute-then-revise noticeably improves quality, and complex domains often benefit from several.
 
-<Tip>
-  Read agent execution traces, not just final outputs. If the agent wastes time on unproductive steps, common causes include instructions that are too vague (the agent tries several approaches before finding one that works), instructions that don't apply to the current task (the agent follows them anyway), or too many options presented without a clear default.
-</Tip>
+> [!TIP]
+>
+> Read agent execution traces, not just final outputs. If the agent wastes time on unproductive steps, common causes include instructions that are too vague (the agent tries several approaches before finding one that works), instructions that don't apply to the current task (the agent follows them anyway), or too many options presented without a clear default.
 
 For a more structured approach to iteration, including test cases, assertions, and grading, see [Evaluating skill output quality](/skill-creation/evaluating-skills).
 
@@ -182,9 +182,9 @@ The highest-value content in many skills is a list of gotchas — environment-sp
 
 Keep gotchas in `SKILL.md` where the agent reads them before encountering the situation. A separate reference file works if you tell the agent when to load it, but for non-obvious issues, the agent may not recognize the trigger.
 
-<Tip>
-  When an agent makes a mistake you have to correct, add the correction to the gotchas section. This is one of the most direct ways to improve a skill iteratively (see [Refine with real execution](#refine-with-real-execution)).
-</Tip>
+> [!TIP]
+>
+> When an agent makes a mistake you have to correct, add the correction to the gotchas section. This is one of the most direct ways to improve a skill iteratively (see [Refine with real execution](#refine-with-real-execution)).
 
 ### Templates for output format
 

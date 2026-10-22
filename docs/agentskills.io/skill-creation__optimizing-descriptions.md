@@ -129,9 +129,9 @@ for i in $(seq 0 $((count - 1))); do
 done | jq -s '.'
 ```
 
-<Tip>
-  If your agent client supports it, you can stop a run early once the outcome is clear — the agent either consulted the skill or started working without it. This can significantly reduce the time and cost of running the full eval set.
-</Tip>
+> [!TIP]
+>
+> If your agent client supports it, you can stop a run early once the outcome is clear — the agent either consulted the skill or started working without it. This can significantly reduce the time and cost of running the full eval set.
 
 ## Avoiding overfitting with train/validation splits
 
@@ -162,9 +162,9 @@ If you're using a script like the one [above](#running-multiple-times), you can 
 
 Five iterations is usually enough. If performance isn't improving, the issue may be with the queries (too easy, too hard, or poorly labeled) rather than the description.
 
-<Tip>
-  The [`skill-creator`](https://github.com/anthropics/skills/tree/main/skills/skill-creator) Skill automates this loop end-to-end: it splits the eval set, evaluates trigger rates in parallel, proposes description improvements using Claude, and generates a live HTML report you can watch as it runs.
-</Tip>
+> [!TIP]
+>
+> The [`skill-creator`](https://github.com/anthropics/skills/tree/main/skills/skill-creator) Skill automates this loop end-to-end: it splits the eval set, evaluates trigger rates in parallel, proposes description improvements using Claude, and generates a live HTML report you can watch as it runs.
 
 ## Applying the result
 
