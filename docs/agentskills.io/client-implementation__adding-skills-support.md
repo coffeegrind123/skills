@@ -15,7 +15,7 @@ The core integration is the same regardless of your agent's architecture. The im
 
 The guide notes where these differences matter. You don't need to support every scenario — follow the path that fits your agent.
 
-**Prerequisites**: Familiarity with the [Agent Skills specification](/specification), which defines the `SKILL.md` file format, frontmatter fields, and directory conventions.
+**Prerequisites**: Familiarity with the [Agent Skills specification](https://agentskills.io/specification.md), which defines the `SKILL.md` file format, frontmatter fields, and directory conventions.
 
 ## The core principle: progressive disclosure
 
@@ -114,7 +114,7 @@ A `SKILL.md` file has two parts: YAML frontmatter between `---` delimiters, and 
 2. Parse the YAML block between them. Extract `name` and `description` (required), plus any optional fields.
 3. Everything after the closing `---`, trimmed, is the skill's body content.
 
-See the [specification](/specification) for the full set of frontmatter fields and their constraints.
+See the [specification](https://agentskills.io/specification.md) for the full set of frontmatter fields and their constraints.
 
 ### Handling malformed YAML
 
@@ -140,7 +140,7 @@ Record diagnostics so they can be surfaced to the user (in a debug command, log 
 
 > [!NOTE]
 >
-> The [specification](/specification) defines strict constraints on the `name` field (matching the parent directory, character set, max length). The lenient approach above deliberately relaxes these to improve compatibility with skills authored for other clients.
+> The [specification](https://agentskills.io/specification.md) defines strict constraints on the `name` field (matching the parent directory, character set, max length). The lenient approach above deliberately relaxes these to improve compatibility with skills authored for other clients.
 
 ### What to store
 
@@ -267,7 +267,7 @@ An autocomplete widget (listing available skills as the user types) can also mak
 
 When a skill is activated, the model receives the skill's instructions. Two options for what exactly that content looks like:
 
-**Full file**: The model sees the entire `SKILL.md` including YAML frontmatter. This is the natural outcome with file-read activation, where the model reads the raw file. It's also a valid choice for dedicated tools. The frontmatter may contain fields useful at activation time — for example, [`compatibility`](/specification#compatibility-field) notes environment requirements that could inform how the model executes the skill's instructions.
+**Full file**: The model sees the entire `SKILL.md` including YAML frontmatter. This is the natural outcome with file-read activation, where the model reads the raw file. It's also a valid choice for dedicated tools. The frontmatter may contain fields useful at activation time — for example, [`compatibility`](https://agentskills.io/specification#compatibility-field) notes environment requirements that could inform how the model executes the skill's instructions.
 
 **Body only (frontmatter stripped)**: The harness parses and removes the YAML frontmatter, returning only the markdown instructions. Among existing implementations with dedicated activation tools, most take this approach — stripping the frontmatter after extracting `name` and `description` during discovery.
 

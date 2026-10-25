@@ -43,7 +43,7 @@ Full instructions load only when a task calls for them, so agents can keep many 
 
 ## Where can I use Agent Skills?
 
-Agent Skills are supported by a large number of AI tools and agentic clients — see the [Client Showcase](/clients) to explore some of them!
+Agent Skills are supported by a large number of AI tools and agentic clients — see the [Client Showcase](https://agentskills.io/clients.md) to explore some of them!
 
 ## Open development
 
@@ -53,10 +53,10 @@ Come join the discussion on [GitHub](https://github.com/agentskills/agentskills)
 
 ## Get started with Agent Skills
 
-> **[Quickstart](/skill-creation/quickstart)**
+> **[Quickstart](https://agentskills.io/skill-creation/quickstart.md)**
 >
 > Create your first Agent Skill and see it in action.
 
-> **[Specification](/specification)**
+> **[Specification](https://agentskills.io/specification.md)**
 >
 > The complete format specification for Agent Skills.
