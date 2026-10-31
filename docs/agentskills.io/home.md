@@ -53,10 +53,10 @@ Come join the discussion on [GitHub](https://github.com/agentskills/agentskills)
 
 ## Get started with Agent Skills
 
-> **[Quickstart](https://agentskills.io/skill-creation/quickstart.md)**
+> [card] [Quickstart](https://agentskills.io/skill-creation/quickstart.md)
 >
 > Create your first Agent Skill and see it in action.
 
-> **[Specification](https://agentskills.io/specification.md)**
+> [card] [Specification](https://agentskills.io/specification.md)
 >
 > The complete format specification for Agent Skills.

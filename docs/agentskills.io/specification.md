@@ -34,6 +34,8 @@ The `SKILL.md` file must contain YAML frontmatter followed by Markdown content.
 | `metadata` | No | Arbitrary key-value mapping for additional metadata (a map from string keys to string values). |
 | `allowed-tools` | No | Space-separated string of pre-approved tools the skill may use. (Experimental) |
 
+> [card]
+>
 > **Minimal example:**
 >
 > ```markdown SKILL.md theme={null}
@@ -66,6 +68,8 @@ The required `name` field:
 * Must not contain consecutive hyphens (`--`)
 * Must match the parent directory name
 
+> [card]
+>
 > **Valid examples:**
 >
 > ```yaml theme={null}
@@ -102,6 +106,8 @@ The required `description` field:
 * Should describe both what the skill does and when to use it
 * Should include specific keywords that help agents identify relevant tasks
 
+> [card]
+>
 > **Good example:**
 >
 > ```yaml theme={null}
@@ -121,6 +127,8 @@ The optional `license` field:
 * Specifies the license applied to the skill
 * We recommend keeping it short (either the name of a license or the name of a bundled license file)
 
+> [card]
+>
 > **Example:**
 >
 > ```yaml theme={null}
@@ -135,6 +143,8 @@ The optional `compatibility` field:
 * Should only be included if your skill has specific environment requirements
 * Can indicate intended product, required system packages, network access needs, etc.
 
+> [card]
+>
 > **Examples:**
 >
 > ```yaml theme={null}
@@ -161,6 +171,8 @@ The optional `metadata` field:
 * Clients can use this to store additional properties not defined by the Agent Skills spec
 * We recommend making your key names reasonably unique to avoid accidental conflicts
 
+> [card]
+>
 > **Example:**
 >
 > ```yaml theme={null}
@@ -176,6 +188,8 @@ The optional `allowed-tools` field:
 * A space-separated string of tools that are pre-approved to run
 * Experimental. Support for this field may vary between agent implementations
 
+> [card]
+>
 > **Example:**
 >
 > ```yaml theme={null}
