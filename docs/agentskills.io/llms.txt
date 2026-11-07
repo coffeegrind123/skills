@@ -1,7 +1,5 @@
 # Agent Skills
 
-## Docs
-
 - [Agent Skills Overview](https://agentskills.io/home.md): A standardized way to give AI agents new capabilities and expertise.
 - [Specification](https://agentskills.io/specification.md): The complete format specification for Agent Skills.
 - [Client Showcase](https://agentskills.io/clients.md): Agent products that support the Agent Skills format.
